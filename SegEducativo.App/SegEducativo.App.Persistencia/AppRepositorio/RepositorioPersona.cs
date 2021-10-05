@@ -28,7 +28,7 @@ namespace SegEducativo.App.Persistencia
 
         void IRepositorioPersona.DeletePersona(int IdPersona)
         {
-            var personencontrada=_appContext.Persona.FirstOrDefault(e =>e.Id==IdPersona);
+            var personencontrada=_appContext.Persona.FirstOrDefault(p =>p.Id==IdPersona);
        if (personencontrada==null)
        return;
        _appContext.Persona.Remove(personencontrada);
@@ -42,7 +42,7 @@ namespace SegEducativo.App.Persistencia
 
         Persona IRepositorioPersona.GetPersona(int IdPersona)
         {
-            var personencontrada=_appContext.Persona.FirstOrDefault(e =>e.Id==IdPersona);
+            var personencontrada=_appContext.Persona.FirstOrDefault(p =>p.Id==IdPersona);
         return personencontrada;
         }
 
@@ -56,9 +56,9 @@ namespace SegEducativo.App.Persistencia
              personencontrada.Direccion=persona.Direccion;
              personencontrada.Ciudad=persona.Ciudad;
              personencontrada.Correo=persona.Correo;
-             personencontrada.Ciudad=persona.Ciudad;
              personencontrada.Celular=persona.Celular;
-             personencontrada.Genero=persona.Genero;              
+             personencontrada.Genero=persona.Genero;
+                        
         
              _appContext.SaveChanges();
           }

@@ -1,0 +1,42 @@
+﻿
+@page
+@model SegEducativo.App.Presentacion.Pages.Estudiantes.IndexModel
+@{
+}
+
+<h1> Esta es una lista de Estudiantes</h1>
+<table class="table">
+ <thead>
+        <tr>
+             <th scope="col"> Nombre</th>
+             <th scope="col"> Apellidos</th>
+              <th scope="col">Direccion</th>
+              <th scope="col"> Ciudad</th>
+              <th scope="col"> Correo</th>
+             <th scope="col"> Celular</th>
+             <th scope="col"> Genero</th>
+             
+        </tr>
+ </thead>
+ <label asp-form="z.Nombre"></label>
+
+ <!-- @foreach (var p in Model.estudiante)
+      
+  
+ {
+     <tr>
+         <td> @p.Nombre</td> 
+         <td> @p.Apellidos</td>
+         <td> @p.Direccion</td>
+         <td> @p.Ciudad</td> 
+         <td> @p.Correo</td> 
+         <td> @p.Celular</td>
+         <td> @p.Genero</td>           
+         
+     </tr>
+ }
+ 
+--> </table>
+
+
+

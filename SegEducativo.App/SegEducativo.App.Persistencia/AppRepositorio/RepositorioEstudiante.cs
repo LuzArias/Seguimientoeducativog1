@@ -11,14 +11,8 @@ namespace SegEducativo.App.Persistencia
 public class RepositorioEstudiante : IRepositorioEstudiante
 
 {
-    private readonly SegEducativo.App.Persistencia.AppContext _appContext = new AppContext();
-        private AppContext appContext;
-
-        public RepositorioEstudiante(AppContext appContext)
-        {
-            this.appContext = appContext;
-        }
-
+    private readonly AppContext _appContext = new AppContext();
+       
         public Estudiante AddEstudiante(Estudiante Estudiante)
     {
         var estudiantenuevo = _appContext.Estudiantes.Add(Estudiante);
@@ -35,7 +29,7 @@ public class RepositorioEstudiante : IRepositorioEstudiante
        _appContext.SaveChanges();
     }
 
-        public IEnumerable<Estudiante> GetAllEstudiante()
+    IEnumerable<Estudiante> IRepositorioEstudiante.GetAllEstudiante()
     {
         return _appContext.Estudiantes;
     }

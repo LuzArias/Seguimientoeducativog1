@@ -58,7 +58,7 @@ public class RepositorioAcudiente : IRepositorioAcudiente
             acudientencontrado.Correo=acudiente.Correo;
             acudientencontrado.Celular=acudiente.Celular;
             acudientencontrado.Genero=acudiente.Genero;
-                        
+                                    
             _appContext.SaveChanges();
            }
            return acudientencontrado;

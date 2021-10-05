@@ -21,27 +21,49 @@ namespace SegEducativo.App.Persistencia
 
         Profesor IRepositorioProfesor.AddProfesor(Profesor profesor)
         {
-            throw new NotImplementedException();
+        var profesornuevo = _appContext.Profesores.Add(profesor);
+        _appContext.SaveChanges();
+        return profesornuevo.Entity;
         }
 
         void IRepositorioProfesor.DeleteProfesor(int Idprofesor)
         {
-            throw new NotImplementedException();
+        var profesorencontrado=_appContext.Profesores.FirstOrDefault(pr =>pr.Id==Idprofesor);
+       if (profesorencontrado==null)
+       return;
+       _appContext.Profesores.Remove(profesorencontrado);
+       _appContext.SaveChanges();
         }
 
         IEnumerable<Profesor> IRepositorioProfesor.GetAllProfesor()
         {
-            throw new NotImplementedException();
+            return _appContext.Profesores;
         }
 
         Profesor IRepositorioProfesor.GetProfesor(int IdProfesor)
         {
-            throw new NotImplementedException();
+            var profesorencontrado=_appContext.Profesores.FirstOrDefault(pr =>pr.Id==IdProfesor);
+        return profesorencontrado;
         }
 
         Profesor IRepositorioProfesor.UpdateProfesor(Profesor profesor)
         {
-            throw new NotImplementedException();
-        }
+            var profesorencontrado=_appContext.Profesores.FirstOrDefault(pr =>pr.Id==profesor.Id);
+            if (profesorencontrado==null)
+            {
+                profesorencontrado.Nombre=profesor.Nombre;
+                profesorencontrado.Apellidos=profesor.Apellidos;
+                profesorencontrado.Direccion=profesor.Direccion;
+                profesorencontrado.Ciudad=profesor.Ciudad;
+                profesorencontrado.Correo=profesor.Correo;
+                profesorencontrado.Celular=profesor.Celular;
+                profesorencontrado.Genero=profesor.Genero;
+                profesorencontrado.Grupo=profesor.Grupo;
+                profesorencontrado.Estudiante=profesor.Estudiante;
+                profesorencontrado.Materia=profesor.Materia;
+                _appContext.SaveChanges();      
+            }
+            return profesorencontrado;
+        } 
     }
 }
