@@ -59,8 +59,6 @@ namespace SegEducativo.App.Persistencia
                 profesorencontrado.Celular=profesor.Celular;
                 profesorencontrado.Genero=profesor.Genero;
                 profesorencontrado.Grupo=profesor.Grupo;
-                profesorencontrado.Estudiante=profesor.Estudiante;
-                profesorencontrado.Materia=profesor.Materia;
                 _appContext.SaveChanges();      
             }
             return profesorencontrado;

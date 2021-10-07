@@ -29,8 +29,8 @@
               "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Dominio\\SegEducativo.App.Dominio.csproj": {
                 "projectPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Dominio\\SegEducativo.App.Dominio.csproj"
               },
-              "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
-                "projectPath": "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj"
+              "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
+                "projectPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj"
               }
             }
           }
@@ -123,14 +123,14 @@
         }
       }
     },
-    "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
+    "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj",
+        "projectUniqueName": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj",
         "projectName": "SegEducativo.App.Persistencia",
-        "projectPath": "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj",
+        "projectPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\obj\\",
+        "outputPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"

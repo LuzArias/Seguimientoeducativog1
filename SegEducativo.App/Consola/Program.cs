@@ -13,21 +13,30 @@ namespace Consola
         static void Main(string[] args)
         {
             Console.WriteLine("prueba crud!");
-            //AddEstudiante();
-            buscarestudiante(1);
+            AddEstudiante();
+             //buscarestudiante(2);
         }
+
         private static void AddEstudiante()
+        {
+            AddEstudiante("2000");
+        }
+
+        private static void AddEstudiante(string v)
         {
             var Estudiante=new Estudiante
             {
-              Nombre="luz",
-              Apellidos="arias",
-              Celular="1234",
-              Genero=Genero.masculino,
+              Nombre="Ana",
+              Apellidos="perez",
+              Celular="1245",
+              Genero=Genero.femenino,
               Direccion="calle sin fin",
               Ciudad="Bogota",
               Correo="luzp@",
-              
+              Materia_id = 1,
+              Acudiente_id = 4,
+              FechaNacimiento=new DateTime(2005),
+                                                    
         };
             _repoEstudiante.AddEstudiante(Estudiante);
         }

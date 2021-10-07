@@ -1,7 +1,7 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SegEducativo.App.Persistencia;
@@ -11,26 +11,25 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
 {
     public class IndexModel : PageModel
     {
-        private readonly IRepositorioEstudiante _repoEstudiante;
-        public IEnumerable<Estudiante> estudiante {get; set;}
+        private readonly IRepositorioEstudiante _repoestudiante;
+        public IEnumerable<Estudiante> estudiantes {get; set;}
         
-        public IndexModel(IRepositorioEstudiante _repoEstudiante)
+        public IndexModel(IRepositorioEstudiante _repoestudiante)
         {
-            this._repoEstudiante = _repoEstudiante;
-                   
-        }
+            this._repoestudiante = _repoestudiante;
+                 this.onGet();        }
+        
         
         public void onGet()
         
         {
-            estudiante= _repoEstudiante.GetAllEstudiante();
-            foreach(var x in estudiante){
-                var z=x.Nombre;
+            estudiantes= _repoestudiante.GetAllEstudiante();
+            
             }
 
         }
     }
-}
+
 
 
 

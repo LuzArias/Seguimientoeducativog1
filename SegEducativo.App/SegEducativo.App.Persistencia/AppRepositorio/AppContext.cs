@@ -7,13 +7,11 @@ namespace SegEducativo.App.Persistencia
  {
      public DbSet <Persona> Persona {get;set;}
      public DbSet <Acudiente> Acudiente {get;set;}
-     public DbSet <DirectorGrupo> Director {get;set;}
-     public DbSet <Estudiante> Estudiantes {get;set;}
+     public DbSet <Estudiante> Estudiante {get;set;}
      public DbSet <Grupo> Grupo {get;set;}
      public DbSet <Materia> Materias {get;set;}
      public DbSet <Profesor> Profesores {get;set;}
-     public DbSet <DirectorGrupo> DirectorGrupo {get;set;}
-
+    
 
 protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
      {
@@ -24,7 +22,15 @@ protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
 
          }
 
+
      }
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+          modelBuilder.Entity<Estudiante>().ToTable("Estudiantes");
+          modelBuilder.Entity<Acudiente>().ToTable("Acudientes");
+          modelBuilder.Entity<Profesor>().ToTable("Profesores");
+      //    modelBuilder.Entity<Medico>().Property(e => e.Id).ValueGeneratedNever();
+        }
 }
 }
 

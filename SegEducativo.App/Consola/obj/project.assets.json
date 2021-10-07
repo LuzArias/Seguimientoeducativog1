@@ -5784,8 +5784,8 @@
     },
     "SegEducativo.App.Persistencia/1.0.0": {
       "type": "project",
-      "path": "../Segeducativo.App.Persistencia/SegEducativo.App.Persistencia.csproj",
-      "msbuildProject": "../Segeducativo.App.Persistencia/SegEducativo.App.Persistencia.csproj"
+      "path": "../SegEducativo.App.Persistencia/SegEducativo.App.Persistencia.csproj",
+      "msbuildProject": "../SegEducativo.App.Persistencia/SegEducativo.App.Persistencia.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5823,8 +5823,8 @@
             "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Dominio\\SegEducativo.App.Dominio.csproj": {
               "projectPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Dominio\\SegEducativo.App.Dominio.csproj"
             },
-            "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
-              "projectPath": "C:\\Educativo\\SegEducativo.App\\Segeducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj"
+            "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj": {
+              "projectPath": "C:\\Educativo\\SegEducativo.App\\SegEducativo.App.Persistencia\\SegEducativo.App.Persistencia.csproj"
             }
           }
         }

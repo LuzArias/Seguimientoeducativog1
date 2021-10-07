@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SegEducativo.App.Persistencia;
 
+
 namespace SegEducativo.App.Presentacion
 {
     public class Startup

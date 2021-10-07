@@ -71,10 +71,6 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Genero")
                         .HasColumnType("int");
 
@@ -84,8 +80,6 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Persona");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Acudiente", b =>
@@ -95,134 +89,104 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<string>("Parentesco")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Acudiente");
-                });
-
-            modelBuilder.Entity("SegEducativo.App.Dominio.DirectorGrupo", b =>
-                {
-                    b.HasBaseType("SegEducativo.App.Dominio.Persona");
-
-                    b.Property<string>("Especialidad")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GrupoId")
-                        .HasColumnType("int")
-                        .HasColumnName("DirectorGrupo_GrupoId");
-
-                    b.HasIndex("GrupoId");
-
-                    b.HasDiscriminator().HasValue("DirectorGrupo");
+                    b.ToTable("Acudientes");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Estudiante", b =>
                 {
                     b.HasBaseType("SegEducativo.App.Dominio.Persona");
 
-                    b.Property<int?>("AcudienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DirectorGrupoId")
+                    b.Property<int>("Acudiente_id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("GrupoId")
+                    b.Property<int>("Materia_id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MateriaId")
+                    b.Property<int?>("ProfesorId")
                         .HasColumnType("int");
 
-                    b.HasIndex("AcudienteId");
+                    b.HasIndex("Acudiente_id");
 
-                    b.HasIndex("DirectorGrupoId");
+                    b.HasIndex("Materia_id");
 
-                    b.HasIndex("GrupoId");
+                    b.HasIndex("ProfesorId");
 
-                    b.HasIndex("MateriaId");
-
-                    b.HasDiscriminator().HasValue("Estudiante");
+                    b.ToTable("Estudiantes");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
                 {
                     b.HasBaseType("SegEducativo.App.Dominio.Persona");
 
-                    b.Property<int?>("EstudianteId")
+                    b.Property<int>("Grupo_id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GrupoId")
-                        .HasColumnType("int")
-                        .HasColumnName("Profesor_GrupoId");
+                    b.HasIndex("Grupo_id");
 
-                    b.Property<int?>("MateriaId")
-                        .HasColumnType("int")
-                        .HasColumnName("Profesor_MateriaId");
-
-                    b.HasIndex("EstudianteId");
-
-                    b.HasIndex("GrupoId");
-
-                    b.HasIndex("MateriaId");
-
-                    b.HasDiscriminator().HasValue("Profesor");
+                    b.ToTable("Profesores");
                 });
 
-            modelBuilder.Entity("SegEducativo.App.Dominio.DirectorGrupo", b =>
+            modelBuilder.Entity("SegEducativo.App.Dominio.Acudiente", b =>
                 {
-                    b.HasOne("SegEducativo.App.Dominio.Grupo", "Grupo")
-                        .WithMany()
-                        .HasForeignKey("GrupoId");
-
-                    b.Navigation("Grupo");
+                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
+                        .WithOne()
+                        .HasForeignKey("SegEducativo.App.Dominio.Acudiente", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Estudiante", b =>
                 {
                     b.HasOne("SegEducativo.App.Dominio.Acudiente", "Acudiente")
                         .WithMany()
-                        .HasForeignKey("AcudienteId");
+                        .HasForeignKey("Acudiente_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("SegEducativo.App.Dominio.DirectorGrupo", "DirectorGrupo")
-                        .WithMany()
-                        .HasForeignKey("DirectorGrupoId");
-
-                    b.HasOne("SegEducativo.App.Dominio.Grupo", "Grupo")
-                        .WithMany()
-                        .HasForeignKey("GrupoId");
+                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
+                        .WithOne()
+                        .HasForeignKey("SegEducativo.App.Dominio.Estudiante", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
 
                     b.HasOne("SegEducativo.App.Dominio.Materia", "Materia")
                         .WithMany()
-                        .HasForeignKey("MateriaId");
+                        .HasForeignKey("Materia_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SegEducativo.App.Dominio.Profesor", null)
+                        .WithMany("Estudiantes")
+                        .HasForeignKey("ProfesorId");
 
                     b.Navigation("Acudiente");
-
-                    b.Navigation("DirectorGrupo");
-
-                    b.Navigation("Grupo");
 
                     b.Navigation("Materia");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
                 {
-                    b.HasOne("SegEducativo.App.Dominio.Estudiante", "Estudiante")
-                        .WithMany()
-                        .HasForeignKey("EstudianteId");
-
                     b.HasOne("SegEducativo.App.Dominio.Grupo", "Grupo")
                         .WithMany()
-                        .HasForeignKey("GrupoId");
+                        .HasForeignKey("Grupo_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("SegEducativo.App.Dominio.Materia", "Materia")
-                        .WithMany()
-                        .HasForeignKey("MateriaId");
-
-                    b.Navigation("Estudiante");
+                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
+                        .WithOne()
+                        .HasForeignKey("SegEducativo.App.Dominio.Profesor", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
 
                     b.Navigation("Grupo");
+                });
 
-                    b.Navigation("Materia");
+            modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
+                {
+                    b.Navigation("Estudiantes");
                 });
 #pragma warning restore 612, 618
         }
