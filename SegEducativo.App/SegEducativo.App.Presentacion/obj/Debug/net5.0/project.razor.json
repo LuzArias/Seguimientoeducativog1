@@ -15644,6 +15644,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Educativo\\SegEducativo.App\\SegEducativo.App.Presentacion\\Pages\\Estudiantes\\Crearestu.cshtml",
+      "TargetPath": "Pages\\Estudiantes\\Crearestu.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Educativo\\SegEducativo.App\\SegEducativo.App.Presentacion\\Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
