@@ -18,6 +18,8 @@
             <th Scope="col"> Celular</th>
             <th Scope="col"> Genero</th>
             <th Scope="col"> Fecha de nacimiento</th>
+            <th Scope="col"> Actualizar</th>
+            <th Scope="col"> Eliminar</th>
         </tr>
         </thead>
         @foreach(var i in Model.estudiantes)
@@ -31,6 +33,9 @@
                 <td> @i.Celular</td>
                 <td> @i.Genero</td>
                 <td> @i.FechaNacimiento</td>
+                
+                <td><a class="btn btn-secondary" asp-page="./Actualizar"asp-route-id="@i.Id">Actualizar</a></td>
+                <td><a class="btn btn-danger" asp-page="./Eliminar"asp-route-id="@i.Id">Eliminar</a></td>
                 
 
             </tr>
