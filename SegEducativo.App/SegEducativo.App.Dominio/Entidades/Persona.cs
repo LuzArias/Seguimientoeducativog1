@@ -11,7 +11,6 @@
         public string Ciudad{ get; set; }
         public string Correo{ get; set; }
         public string Celular{ get; set; }
-
         public Genero Genero { set; get; }
     }
 }

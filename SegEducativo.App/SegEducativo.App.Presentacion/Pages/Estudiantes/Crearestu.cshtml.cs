@@ -19,19 +19,17 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
         }
         public void OnGet()
         {
-            estudiantes=new Estudiante();
+            //estudiantes=new Estudiante();
         }
-        public IActionResult onPost(Estudiante Estudiante)
+        public IActionResult OnPost(Estudiante estudiantes)
         {
-            if (Estudiante is null)
+            _repoestudiante.AddEstudiante(estudiantes);
+            return RedirectToPage("Index");
+            
             {
-                throw new ArgumentNullException(nameof(Estudiante));
+                
             }
         }
-
-        _repoestudiante.AddEstudiante(estudiantes);
-            return RedirectToPageResult("Index")
-
-        }
     }
-}
+}  
+    

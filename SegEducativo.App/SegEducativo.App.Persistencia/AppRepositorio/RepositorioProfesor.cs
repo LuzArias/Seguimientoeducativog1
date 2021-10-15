@@ -58,7 +58,7 @@ namespace SegEducativo.App.Persistencia
                 profesorencontrado.Correo=profesor.Correo;
                 profesorencontrado.Celular=profesor.Celular;
                 profesorencontrado.Genero=profesor.Genero;
-                profesorencontrado.Grupo=profesor.Grupo;
+                profesorencontrado.Grupos=profesor.Grupos;
                 _appContext.SaveChanges();      
             }
             return profesorencontrado;

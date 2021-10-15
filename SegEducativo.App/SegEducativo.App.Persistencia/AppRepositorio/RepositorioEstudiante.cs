@@ -10,19 +10,9 @@ namespace SegEducativo.App.Persistencia
     public class RepositorioEstudiante : IRepositorioEstudiante
 
     {
-        private readonly AppContext _appContext = new AppContext();
-
-        public RepositorioEstudiante(AppContext appContext)
-        {
-            _appContext = appContext; //Necesitamos definir un contexto
-        }
-        public RepositorioEstudiante()
-        {
-             
-        }
-
-
-
+        private readonly AppContext _appContext = new AppContext();                      
+        
+    
         public Estudiante AddEstudiante(Estudiante Estudiante)
         {
             var estudiantenuevo = _appContext.Estudiante.Add(Estudiante);
@@ -64,9 +54,7 @@ namespace SegEducativo.App.Persistencia
                 estudiantencontrado.Correo = Estudiante.Correo;
                 estudiantencontrado.Celular = Estudiante.Celular;
                 estudiantencontrado.Genero = Estudiante.Genero;
-               // estudiantencontrado.Materia = Estudiante.Materia;
                 estudiantencontrado.FechaNacimiento = Estudiante.FechaNacimiento;
-                estudiantencontrado.Acudiente = Estudiante.Acudiente;
                 _appContext.SaveChanges();
             }
             return estudiantencontrado;

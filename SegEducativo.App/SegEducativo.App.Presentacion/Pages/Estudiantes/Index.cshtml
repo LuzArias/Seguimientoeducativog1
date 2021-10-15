@@ -4,7 +4,7 @@
 }
 
 <h1> Esta es una lista de Estudiantes</h1>
-<a class="btn btn-primary"asp-pages="Crearestu">Nuevo Paciente</a>
+<a class="btn btn-primary"asp-page="./Crearestu">Nuevo Estudiante</a>
 <br>
 
 <table class="table">
@@ -17,10 +17,7 @@
             <th Scope="col"> Correo</th>
             <th Scope="col"> Celular</th>
             <th Scope="col"> Genero</th>
-            <th Scope="col"> Materia</th>
             <th Scope="col"> Fecha de nacimiento</th>
-            <th Scope="col"> Acudiente</th>
-
         </tr>
         </thead>
         @foreach(var i in Model.estudiantes)
@@ -33,10 +30,8 @@
                 <td> @i.Correo</td>
                 <td> @i.Celular</td>
                 <td> @i.Genero</td>
-                <td> @i.Materia</td>
                 <td> @i.FechaNacimiento</td>
-                <td> @i.Acudiente</td>
-
+                
 
             </tr>
         }

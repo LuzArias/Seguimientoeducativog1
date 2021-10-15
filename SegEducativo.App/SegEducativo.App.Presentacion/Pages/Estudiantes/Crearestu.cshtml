@@ -2,3 +2,40 @@
 @model SegEducativo.App.Presentacion.Pages.Estudiantes.CrearestuModel
 @{
 }
+<h1>Crear nuevo Estudiante</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="estudiantes.Nombre"></label>
+        <input asp-for="estudiantes.Nombre" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Apellidos"></label>
+        <input asp-for="estudiantes.Apellidos" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Direccion"></label>
+        <input asp-for="estudiantes.Direccion" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Ciudad"></label>
+        <input asp-for="estudiantes.Ciudad" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Correo"></label>
+        <input asp-for="estudiantes.Correo" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Celular"></label>
+        <input asp-for="estudiantes.Celular" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.Genero"></label>
+        <input asp-for="estudiantes.Genero" class="form-control">
+    </div>
+     <div class="form-group">
+        <label asp-for="estudiantes.FechaNacimiento"></label>
+        <input asp-for="estudiantes.FechaNacimiento" class="form-control">
+    </div>
+    <button type="submit"class="btn btn-primary">Crear Estudiante</button>
+
+</form>

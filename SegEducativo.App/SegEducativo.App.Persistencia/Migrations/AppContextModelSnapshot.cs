@@ -29,7 +29,12 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProfesorId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfesorId");
 
                     b.ToTable("Grupo");
                 });
@@ -41,10 +46,15 @@ namespace SegEducativo.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("EstudianteId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EstudianteId");
 
                     b.ToTable("Materias");
                 });
@@ -71,6 +81,10 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Genero")
                         .HasColumnType("int");
 
@@ -80,6 +94,51 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Persona");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
+                });
+
+            modelBuilder.Entity("SegEducativo.App.Dominio.Recomendaciones", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("EstudianteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("progreso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstudianteId");
+
+                    b.ToTable("Recomendaciones");
+                });
+
+            modelBuilder.Entity("SegEducativo.App.Dominio.Tarea", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EstudianteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstudianteId");
+
+                    b.ToTable("Tareas");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Acudiente", b =>
@@ -89,104 +148,94 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<string>("Parentesco")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Acudientes");
+                    b.HasDiscriminator().HasValue("Acudiente");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Estudiante", b =>
                 {
                     b.HasBaseType("SegEducativo.App.Dominio.Persona");
 
-                    b.Property<int>("Acudiente_id")
+                    b.Property<int?>("AcudienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Materia_id")
-                        .HasColumnType("int");
+                    b.HasIndex("AcudienteId");
 
-                    b.Property<int?>("ProfesorId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("Acudiente_id");
-
-                    b.HasIndex("Materia_id");
-
-                    b.HasIndex("ProfesorId");
-
-                    b.ToTable("Estudiantes");
+                    b.HasDiscriminator().HasValue("Estudiante");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
                 {
                     b.HasBaseType("SegEducativo.App.Dominio.Persona");
 
-                    b.Property<int>("Grupo_id")
+                    b.Property<int?>("EstudianteId")
                         .HasColumnType("int");
 
-                    b.HasIndex("Grupo_id");
+                    b.HasIndex("EstudianteId");
 
-                    b.ToTable("Profesores");
+                    b.HasDiscriminator().HasValue("Profesor");
                 });
 
-            modelBuilder.Entity("SegEducativo.App.Dominio.Acudiente", b =>
+            modelBuilder.Entity("SegEducativo.App.Dominio.Grupo", b =>
                 {
-                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
-                        .WithOne()
-                        .HasForeignKey("SegEducativo.App.Dominio.Acudiente", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+                    b.HasOne("SegEducativo.App.Dominio.Profesor", null)
+                        .WithMany("Grupos")
+                        .HasForeignKey("ProfesorId");
+                });
+
+            modelBuilder.Entity("SegEducativo.App.Dominio.Materia", b =>
+                {
+                    b.HasOne("SegEducativo.App.Dominio.Estudiante", null)
+                        .WithMany("Materias")
+                        .HasForeignKey("EstudianteId");
+                });
+
+            modelBuilder.Entity("SegEducativo.App.Dominio.Recomendaciones", b =>
+                {
+                    b.HasOne("SegEducativo.App.Dominio.Estudiante", null)
+                        .WithMany("Recomendaciones")
+                        .HasForeignKey("EstudianteId");
+                });
+
+            modelBuilder.Entity("SegEducativo.App.Dominio.Tarea", b =>
+                {
+                    b.HasOne("SegEducativo.App.Dominio.Estudiante", null)
+                        .WithMany("Tareas")
+                        .HasForeignKey("EstudianteId");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Estudiante", b =>
                 {
                     b.HasOne("SegEducativo.App.Dominio.Acudiente", "Acudiente")
                         .WithMany()
-                        .HasForeignKey("Acudiente_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
-                        .WithOne()
-                        .HasForeignKey("SegEducativo.App.Dominio.Estudiante", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.HasOne("SegEducativo.App.Dominio.Materia", "Materia")
-                        .WithMany()
-                        .HasForeignKey("Materia_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SegEducativo.App.Dominio.Profesor", null)
-                        .WithMany("Estudiantes")
-                        .HasForeignKey("ProfesorId");
+                        .HasForeignKey("AcudienteId");
 
                     b.Navigation("Acudiente");
-
-                    b.Navigation("Materia");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
                 {
-                    b.HasOne("SegEducativo.App.Dominio.Grupo", "Grupo")
-                        .WithMany()
-                        .HasForeignKey("Grupo_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("SegEducativo.App.Dominio.Estudiante", null)
+                        .WithMany("Profesores")
+                        .HasForeignKey("EstudianteId");
+                });
 
-                    b.HasOne("SegEducativo.App.Dominio.Persona", null)
-                        .WithOne()
-                        .HasForeignKey("SegEducativo.App.Dominio.Profesor", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+            modelBuilder.Entity("SegEducativo.App.Dominio.Estudiante", b =>
+                {
+                    b.Navigation("Materias");
 
-                    b.Navigation("Grupo");
+                    b.Navigation("Profesores");
+
+                    b.Navigation("Recomendaciones");
+
+                    b.Navigation("Tareas");
                 });
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Profesor", b =>
                 {
-                    b.Navigation("Estudiantes");
+                    b.Navigation("Grupos");
                 });
 #pragma warning restore 612, 618
         }
