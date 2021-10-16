@@ -15672,6 +15672,11 @@
       "FilePath": "c:\\Educativo\\SegEducativo.App\\SegEducativo.App.Presentacion\\Pages\\Privacy.cshtml",
       "TargetPath": "Pages\\Privacy.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Educativo\\SegEducativo.App\\SegEducativo.App.Presentacion\\Pages\\Estudiantes\\Tarea.cshtml",
+      "TargetPath": "Pages\\Estudiantes\\Tarea.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

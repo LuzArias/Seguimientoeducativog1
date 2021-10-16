@@ -10,9 +10,9 @@ namespace SegEducativo.App.Persistencia
     public class RepositorioEstudiante : IRepositorioEstudiante
 
     {
-        private readonly AppContext _appContext = new AppContext();                      
-        
-    
+        private readonly AppContext _appContext = new AppContext();
+
+
         public Estudiante AddEstudiante(Estudiante Estudiante)
         {
             var estudiantenuevo = _appContext.Estudiante.Add(Estudiante);
@@ -60,9 +60,40 @@ namespace SegEducativo.App.Persistencia
             return estudiantencontrado;
         }
 
-    }
 
+
+        void IRepositorioEstudiante.AddTarea(int IdEstudiante, Tarea tarea)
+        {
+            var Estudiante = _appContext.Estudiante.Find(IdEstudiante);
+            if (Estudiante!= null)
+            {
+                if (Estudiante.Tareas != null)
+                {
+                    Estudiante.Tareas.Add(tarea);
+                }
+                else Estudiante.Tareas = new List<Tarea>();
+                Estudiante.Tareas.Add(tarea);
+            }
+            var estudiantencontrado = _appContext.Estudiante.Find(Estudiante.Id);
+            if (estudiantencontrado != null)
+            {      
+                  
+                estudiantencontrado.Nombre = Estudiante.Nombre;
+                estudiantencontrado.Apellidos = Estudiante.Apellidos;
+                estudiantencontrado.Direccion = Estudiante.Direccion;
+                estudiantencontrado.Ciudad = Estudiante.Ciudad;
+                estudiantencontrado.Correo = Estudiante.Correo;
+                estudiantencontrado.Celular = Estudiante.Celular;
+                estudiantencontrado.Genero = Estudiante.Genero;
+                estudiantencontrado.FechaNacimiento = Estudiante.FechaNacimiento;
+                _appContext.SaveChanges();
+            }
+        }
+    }
 }
+
+
+
 
 
 

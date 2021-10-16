@@ -10,7 +10,8 @@ public interface IRepositorioEstudiante
     Estudiante AddEstudiante (Estudiante Estudiante);
     Estudiante UpdateEstudiante (Estudiante Estudiante);
     void DeleteEstudiante (int IdEstudiante);
-    Estudiante GetEstudiante (int IdEstudiante);    
+    Estudiante GetEstudiante (int IdEstudiante);  
+    void AddTarea(int IdEstudiante, Tarea tarea); 
     
 }
 }

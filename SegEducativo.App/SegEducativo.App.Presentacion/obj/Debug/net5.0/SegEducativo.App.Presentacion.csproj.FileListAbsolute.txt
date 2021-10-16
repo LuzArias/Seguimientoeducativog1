@@ -161,3 +161,4 @@ C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\run
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Pages\Estudiantes\Actualizar.cshtml.g.cs
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Pages\Estudiantes\Eliminar.cshtml.g.cs
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Pages\Estudiantes\Tarea.cshtml.g.cs
