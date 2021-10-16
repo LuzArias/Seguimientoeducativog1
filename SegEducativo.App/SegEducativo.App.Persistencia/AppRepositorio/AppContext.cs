@@ -20,7 +20,7 @@ protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
      {
 
          if (!optionsBuilder.IsConfigured){
-             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLlocalDB; Initial Catalog=Educativofin.Data");
+             optionsBuilder.UseSqlServer("Data Source=; Initial Catalog=Educativoapp.Data");
 
 
          }
