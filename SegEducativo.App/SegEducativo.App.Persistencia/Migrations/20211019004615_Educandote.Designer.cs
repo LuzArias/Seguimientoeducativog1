@@ -10,23 +10,23 @@ using SegEducativo.App.Persistencia;
 namespace SegEducativo.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20211016020642_Educar")]
-    partial class Educar
+    [Migration("20211019004615_Educandote")]
+    partial class Educandote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("SegEducativo.App.Dominio.Grupo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -46,7 +46,7 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("EstudianteId")
                         .HasColumnType("int");
@@ -66,7 +66,7 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Apellidos")
                         .HasColumnType("nvarchar(max)");
@@ -105,7 +105,7 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("EstudianteId")
                         .HasColumnType("int");
@@ -125,7 +125,7 @@ namespace SegEducativo.App.Persistencia.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("EstudianteId")
                         .HasColumnType("int");

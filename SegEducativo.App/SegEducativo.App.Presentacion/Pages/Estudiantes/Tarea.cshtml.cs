@@ -1,9 +1,8 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SegEducativo.App.Persistencia;
 using SegEducativo.App.Dominio;
-using System.Collections;
+
 
 namespace SegEducativo.App.Presentacion.Pages.Estudiantes
 {

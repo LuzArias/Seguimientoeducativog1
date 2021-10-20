@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SegEducativo.App.Persistencia.Migrations
 {
-    public partial class Educar : Migration
+    public partial class Educandote : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

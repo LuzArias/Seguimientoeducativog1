@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SegEducativo.App.Dominio;
@@ -11,16 +7,24 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
 {
     public class EliminarModel : PageModel
     {
-        private readonly IRepositorioEstudiante _appContext;
+        private readonly IRepositorioEstudiante RepositorioEstudiante;
+        [BindProperty]
         public Estudiante Estudiante { get; set; }
-        public EliminarModel(IRepositorioEstudiante _appContext)
+
+        public EliminarModel()
 
         {
-            this._appContext = _appContext;
+            this.RepositorioEstudiante =new RepositorioEstudiante();
+            
         }
-        public IActionResult OnGet(int Id)
+        public IActionResult OnGet(int? Id)
         {
-            Estudiante = _appContext.GetEstudiante(Id);
+            if (Id.HasValue)
+            {
+                 Estudiante = RepositorioEstudiante.GetEstudiante(Id.Value);
+
+            }
+           
 
             if (Estudiante== null)
             {
@@ -30,13 +34,23 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
         }
     
 
-    public IActionResult OnPost(int Id)
+    public IActionResult OnPost()
     {
-        _appContext.DeleteEstudiante(Id);
+        if(!ModelState.IsValid)
+        {
+             return Page();
+        }
 
-        return RedirectToPage("Index");
+        if(Estudiante.Id>0)
+        {
+            RepositorioEstudiante.DeleteEstudiante(Estudiante.Id);
 
+        }     
+         return Page();
+        }   
+
+     
     }
 }
-}
+
 

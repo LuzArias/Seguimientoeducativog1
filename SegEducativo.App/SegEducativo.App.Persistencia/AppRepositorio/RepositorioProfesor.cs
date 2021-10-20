@@ -1,8 +1,7 @@
-using  Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using SegEducativo.App.Dominio;
 using System.Linq;
-using System;
+
 
 
 namespace SegEducativo.App.Persistencia
