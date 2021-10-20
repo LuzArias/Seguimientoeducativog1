@@ -7,24 +7,16 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
 {
     public class EliminarModel : PageModel
     {
-        private readonly IRepositorioEstudiante RepositorioEstudiante;
-        [BindProperty]
+        private readonly IRepositorioEstudiante _appContext;
         public Estudiante Estudiante { get; set; }
-
-        public EliminarModel()
+        public EliminarModel(IRepositorioEstudiante _appContext)
 
         {
-            this.RepositorioEstudiante =new RepositorioEstudiante();
-            
+            this._appContext = _appContext;
         }
-        public IActionResult OnGet(int? Id)
+        public IActionResult OnGet(int Id)
         {
-            if (Id.HasValue)
-            {
-                 Estudiante = RepositorioEstudiante.GetEstudiante(Id.Value);
-
-            }
-           
+            Estudiante = _appContext.GetEstudiante(Id);
 
             if (Estudiante== null)
             {
@@ -34,23 +26,12 @@ namespace SegEducativo.App.Presentacion.Pages.Estudiantes
         }
     
 
-    public IActionResult OnPost()
+    public IActionResult OnPost(int Id)
     {
-        if(!ModelState.IsValid)
-        {
-             return Page();
-        }
+        _appContext.DeleteEstudiante(Id);
 
-        if(Estudiante.Id>0)
-        {
-            RepositorioEstudiante.DeleteEstudiante(Estudiante.Id);
+        return RedirectToPage("Index");
 
-        }     
-         return Page();
-        }   
-
-     
     }
 }
-
-
+}
