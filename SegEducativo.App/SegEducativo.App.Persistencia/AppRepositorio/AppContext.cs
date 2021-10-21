@@ -20,7 +20,7 @@ protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
      {
 
          if (!optionsBuilder.IsConfigured){
-             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLlocalDB; Initial Catalog=Educativoapp.Data");
+             optionsBuilder.UseSqlServer("Server=tcp:databaseestudiantes.database.windows.net,1433;Initial Catalog=Educativo;Persist Security Info=False;User ID=luluma;Password=eybNc@qNMC5UYhf;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
 
          }
