@@ -13,7 +13,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 body{
-   background-color: #68fdfd;
+   background-color: #ffffff;
 }
 
 .wrapper{
@@ -24,7 +24,8 @@ body{
 .wrapper .sidebar{
   width: 150px;
   height: 100%;
-  background: #008080;
+  background: #466bd9;
+  color:#ffffff;
   padding: 30px 0px;
   position: fixed;
 }
@@ -44,7 +45,7 @@ body{
 }    
 
 .wrapper .sidebar ul li a{
-  color: #bdb8d7;
+  color: #ffffff;
   display: block;
 }
 
@@ -53,7 +54,7 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-  background-color: #594f8d;
+  background-color: #466bd9;
 }
     
 .wrapper .sidebar ul li:hover a{
@@ -71,7 +72,7 @@ body{
 .wrapper .sidebar .social_media a{
   display: block;
   width: 40px;
-  background: #594f8d;
+  background: #1a2957;
   height: 40px;
   line-height: 45px;
   text-align: center;

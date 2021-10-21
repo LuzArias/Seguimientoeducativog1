@@ -164,3 +164,8 @@ C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Raz
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\obj\Debug\net5.0\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\publish\web.config
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\publish\appsettings.Development.json
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\publish\appsettings.json
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\publish\SegEducativo.App.Presentacion.deps.json
+C:\Educativo\SegEducativo.App\SegEducativo.App.Presentacion\bin\Debug\net5.0\publish\SegEducativo.App.Presentacion.runtimeconfig.json
